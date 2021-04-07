@@ -1,0 +1,52 @@
+<web-app version="5.0" xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+         https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         metadata-complete="false">
+    <display-name>M-JD2-XXX-XX</display-name>
+    <welcome-file-list>
+        <welcome-file>signIn.jsp</welcome-file>
+    </welcome-file-list>
+    <servlet>
+        <servlet-name>loginPage</servlet-name>
+        <jsp-file>/signIn.jsp</jsp-file> <!-- Your JSP. Must begin with '/' -->
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>loginPage</servlet-name>
+        <url-pattern>/loginPage</url-pattern> <!-- Any URL you want here -->
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>addUser</servlet-name>
+        <jsp-file>/signUp.jsp</jsp-file> <!-- Your JSP. Must begin with '/' -->
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addUser</servlet-name>
+        <url-pattern>/addUser</url-pattern> <!-- Any URL you want here -->
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>InChat</servlet-name>
+        <jsp-file>/chat.jsp</jsp-file> <!-- Your JSP. Must begin with '/' -->
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InChat</servlet-name>
+        <url-pattern>/InChat</url-pattern> <!-- Any URL you want here -->
+    </servlet-mapping>
+    <filter>
+        <filter-name>SecurityFilter</filter-name>
+        <filter-class>by.it_academy.jd2.web.filters.SecurityFilter</filter-class>
+        <init-param>
+            <param-name>active</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+    <listener>
+        <listener-class>by.it_academy.jd2.web.listeners.SessionChangeListener</listener-class>
+    </listener>
+
+</web-app>
